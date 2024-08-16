@@ -2,7 +2,7 @@
   "name": "learnlingo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "live page",
+  "homepage": "/Learn-Lingo",
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@reduxjs/toolkit": "^2.2.1",
