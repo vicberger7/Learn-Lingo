@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { styled } from "styled-components";
 
 export const HeartButton = styled.button`
   display: flex;
@@ -7,4 +7,10 @@ export const HeartButton = styled.button`
   height: 35px;
   border: transparent;
   background-color: transparent;
+
+  svg {
+    fill: red;
+    stroke: red;
+    transition: fill 0.3s ease, stroke 0.3s ease;
+  }
 `;

@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-
 import { Layout } from './Layout/Layout';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from '../redux/auth/authSlice';

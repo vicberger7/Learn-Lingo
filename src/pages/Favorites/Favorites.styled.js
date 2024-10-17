@@ -5,7 +5,7 @@ export const StyledSection = styled.section`
   padding: 96px 128px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.secondaryBgColor};
@@ -34,4 +34,9 @@ export const FavoritesSpan = styled.span`
   font-weight: 500;
   background-color: ${({ theme }) => theme.colors.accent};
   border-radius: 12px;
+`;
+
+export const Picture = styled.img`
+  border-radius: 20px;
+  width: 250px;
 `;

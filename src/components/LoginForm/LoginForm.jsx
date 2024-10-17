@@ -1,11 +1,11 @@
 import { EyeOff } from 'components/icons/EyeOff';
 import { Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 import * as yup from 'yup';
 
-import { setUser } from '../../redux/auth/authSlice';
+
 import { toast } from 'react-hot-toast';
 import {
   ButtonForm,
@@ -32,7 +32,7 @@ const FormSchema = yup.object().shape({
 
 export const LoginForm = ({ onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const dispatch = useDispatch();
+
   const initialValues = {
     email: '',
     password: '',
@@ -42,21 +42,17 @@ export const LoginForm = ({ onClose }) => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = ({ email, password }, actions) => {
+  const handleSubmit = async ({ email, password }, actions) => {
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        dispatch(
-          setUser({
-            email: user.email,
-            token: user.accessToken,
-          })
-        );
-        onClose();
-      })
-      .catch(error => {
-        toast.error('Invalid user!');
-      });
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      toast.success('User registered successfully', user);
+    } catch (error) {
+      console.error('Error registering user', error);
+    }
+   
 
     actions.resetForm();
   };

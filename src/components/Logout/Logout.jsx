@@ -1,4 +1,4 @@
-import { getAuth, deleteUser } from 'firebase/auth';
+import { getAuth, signOut } from 'firebase/auth';
 import { ButtonRegistration } from 'components/UserMenu/UserMenu.styled';
 
 import { useDispatch } from 'react-redux';
@@ -11,8 +11,8 @@ export const LogOut = () => {
 
   const handleClick = () => {
     const auth = getAuth();
-    const user = auth.currentUser;
-    deleteUser(user)
+   
+    signOut(auth)
       .then(() => {
         dispatch(removeUser());
         dispatch(clearFavorites());

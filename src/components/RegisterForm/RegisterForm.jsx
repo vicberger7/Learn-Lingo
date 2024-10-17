@@ -48,24 +48,24 @@ export const RegisterForm = ({ onClose }) => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = ({ name, email, password }, actions) => {
+  const handleSubmit = async({ name, email, password }, actions) => {
     const auth = getAuth();
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        dispatch(
-          setUser({
-            email: user.email,
-            token: user.accessToken,
-          })
-        );
-        toast.success('Registration is successful');
-        onClose();
-      })
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      dispatch(
+              setUser({
+                email: user.email,
+                token: user.accessToken,
+              })
+            );
+      toast.success('User registered successfully', user);
+    } catch (error) {
+      console.error('Error registering user', error);
+    }
 
-      .catch(error => {
-        toast.error('User is already exist');
-      });
+   
 
     actions.resetForm();
   };
