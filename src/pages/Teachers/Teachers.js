@@ -5,7 +5,7 @@ import { ButtonTop, StyledMain, StyledSection, Text } from "./Teachers.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosArrowUp } from "react-icons/io";
 import {
-   selectFilters,
+  //  selectFilters,
   selectVisibleTeachers,
 } from "../../redux/teachers/selectors";
 import { Loader } from "components/Loader/Loader";
@@ -14,7 +14,7 @@ import { fetchTeachers } from "../../redux/teachers/teachersOps";
 
 export default function Teachers() {
   const dataTeachers = useSelector(selectVisibleTeachers);
-   const filters = useSelector(selectFilters);
+  //  const filters = useSelector(selectFilters);
 
   const dispatch = useDispatch();
 
